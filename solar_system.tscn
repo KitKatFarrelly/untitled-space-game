@@ -1,3 +1,62 @@
 [gd_scene format=3 uid="uid://d1vd0g1l70cxx"]
 
-[node name="Node3D" type="Node3D" unique_id=89133487]
+[ext_resource type="Texture2D" uid="uid://17x2valeqeq7" path="res://example_star.png" id="1_hbvo3"]
+[ext_resource type="Texture2D" uid="uid://mh8p7k7rrv3k" path="res://example_planet_hot.png" id="2_hp4wh"]
+[ext_resource type="Texture2D" uid="uid://dshfkay1pqhkv" path="res://example_planet_cold.png" id="3_tfb7d"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ae0vk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hp4wh"]
+transparency = 1
+albedo_texture = ExtResource("1_hbvo3")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_tfb7d"]
+material = SubResource("StandardMaterial3D_hp4wh")
+size = Vector2(4, 4)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tfb7d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_auk15"]
+transparency = 1
+albedo_texture = ExtResource("2_hp4wh")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_ms4l2"]
+material = SubResource("StandardMaterial3D_auk15")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ms4l2"]
+transparency = 1
+albedo_texture = ExtResource("3_tfb7d")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_swmsm"]
+material = SubResource("StandardMaterial3D_ms4l2")
+
+[node name="Node3D" type="Node3D" unique_id=1728173291]
+
+[node name="star" type="CharacterBody3D" parent="." unique_id=93710306]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="star" unique_id=1232494236]
+shape = SubResource("SphereShape3D_ae0vk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="star" unique_id=1161668101]
+mesh = SubResource("QuadMesh_tfb7d")
+
+[node name="planet_example" type="CharacterBody3D" parent="." unique_id=1709225332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planet_example" unique_id=784003943]
+shape = SubResource("SphereShape3D_tfb7d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="planet_example" unique_id=333154149]
+mesh = SubResource("QuadMesh_ms4l2")
+
+[node name="planet_example_cold" type="CharacterBody3D" parent="." unique_id=1444159719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planet_example_cold" unique_id=1705448492]
+shape = SubResource("SphereShape3D_tfb7d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="planet_example_cold" unique_id=534669848]
+mesh = SubResource("QuadMesh_swmsm")
