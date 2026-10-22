@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://d1vd0g1l70cxx"]
 
 [ext_resource type="Texture2D" uid="uid://17x2valeqeq7" path="res://example_star.png" id="1_hbvo3"]
+[ext_resource type="Script" uid="uid://dkkm5diswcjyp" path="res://planet_example.gd" id="2_auk15"]
 [ext_resource type="Texture2D" uid="uid://mh8p7k7rrv3k" path="res://example_planet_hot.png" id="2_hp4wh"]
 [ext_resource type="Texture2D" uid="uid://dshfkay1pqhkv" path="res://example_planet_cold.png" id="3_tfb7d"]
+[ext_resource type="Script" uid="uid://crnm2vkfqdohg" path="res://planet_example_cold.gd" id="4_ms4l2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ae0vk"]
 
@@ -35,7 +37,7 @@ material = SubResource("StandardMaterial3D_ms4l2")
 
 [node name="Node3D" type="Node3D" unique_id=1728173291]
 
-[node name="star" type="CharacterBody3D" parent="." unique_id=93710306]
+[node name="star" type="RigidBody3D" parent="." unique_id=701036612]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="star" unique_id=1232494236]
 shape = SubResource("SphereShape3D_ae0vk")
@@ -43,20 +45,22 @@ shape = SubResource("SphereShape3D_ae0vk")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="star" unique_id=1161668101]
 mesh = SubResource("QuadMesh_tfb7d")
 
-[node name="planet_example" type="CharacterBody3D" parent="." unique_id=1709225332]
+[node name="planet_example" type="RigidBody3D" parent="star" unique_id=300452856]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+script = ExtResource("2_auk15")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="planet_example" unique_id=784003943]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="star/planet_example" unique_id=784003943]
 shape = SubResource("SphereShape3D_tfb7d")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="planet_example" unique_id=333154149]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="star/planet_example" unique_id=333154149]
 mesh = SubResource("QuadMesh_ms4l2")
 
-[node name="planet_example_cold" type="CharacterBody3D" parent="." unique_id=1444159719]
+[node name="planet_example_cold" type="RigidBody3D" parent="star" unique_id=97019501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+script = ExtResource("4_ms4l2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="planet_example_cold" unique_id=1705448492]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="star/planet_example_cold" unique_id=1705448492]
 shape = SubResource("SphereShape3D_tfb7d")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="planet_example_cold" unique_id=534669848]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="star/planet_example_cold" unique_id=534669848]
 mesh = SubResource("QuadMesh_swmsm")
