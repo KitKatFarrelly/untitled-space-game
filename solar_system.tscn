@@ -38,6 +38,7 @@ material = SubResource("StandardMaterial3D_ms4l2")
 [node name="Node3D" type="Node3D" unique_id=1728173291]
 
 [node name="star" type="RigidBody3D" parent="." unique_id=701036612]
+gravity_scale = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="star" unique_id=1232494236]
 shape = SubResource("SphereShape3D_ae0vk")
@@ -46,7 +47,7 @@ shape = SubResource("SphereShape3D_ae0vk")
 mesh = SubResource("QuadMesh_tfb7d")
 
 [node name="planet_example" type="RigidBody3D" parent="star" unique_id=300452856]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("2_auk15")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="star/planet_example" unique_id=784003943]
@@ -57,6 +58,7 @@ mesh = SubResource("QuadMesh_ms4l2")
 
 [node name="planet_example_cold" type="RigidBody3D" parent="star" unique_id=97019501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+gravity_scale = 0.0
 script = ExtResource("4_ms4l2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="star/planet_example_cold" unique_id=1705448492]
@@ -64,3 +66,9 @@ shape = SubResource("SphereShape3D_tfb7d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="star/planet_example_cold" unique_id=534669848]
 mesh = SubResource("QuadMesh_swmsm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2101381227]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 20, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=264609629]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 30, 0)
