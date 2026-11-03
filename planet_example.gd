@@ -74,6 +74,12 @@ func _process(delta):
 	var next_velocity = (sqrt(30 * semi_major_axis) * parent_body_current_dist) * Vector3(-sin(current_eccentric_anomaly), 0, sqrt(1 - (eccentricity**2)) * cos(current_eccentric_anomaly))
 	
 	# transform the position using the argument of the periapsis
+	var peri_basis = Basis()
+	peri_basis.x = Vector3(cos(argument_of_periapsis), 0, -sin(argument_of_periapsis))
+	peri_basis.y = Vector3(0, 1, 0)
+	peri_basis.z = Vector3(sin(argument_of_periapsis), 0, cos(argument_of_periapsis))
+	
+	var peri_transform = peri_basis * next_position
 	
 	# move this body to the point obtained by this calculation.
-	position = next_position
+	position = peri_transform
